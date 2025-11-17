@@ -1,0 +1,42 @@
+<section class="skills" id="skills">
+  <div class="container">
+    <h2 class="section-title">Skills & Expertise</h2>
+    
+    <div class="skills-grid">
+      @for (category of skillCategories; track category.title) {
+        <div class="skill-category">
+          <div class="category-header">
+            <div class="category-icon" [innerHTML]="getSafeHtml(category.icon)"></div>
+            <h3 class="category-title">{{ category.title }}</h3>
+          </div>
+          <div class="skill-items">
+            @for (skill of category.skills; track skill.name) {
+              <div class="skill-item">
+                <div class="skill-icon" [innerHTML]="getSafeHtml(skill.icon)"></div>
+                <span class="skill-name">{{ skill.name }}</span>
+              </div>
+            }
+          </div>
+        </div>
+      }
+    </div>
+
+    <div class="certifications-section">
+      <h3 class="subsection-title">Certifications</h3>
+      <ul class="cert-list">
+        @for (cert of certifications; track cert) {
+          <li>{{ cert }}</li>
+        }
+      </ul>
+    </div>
+
+    <div class="awards-section">
+      <h3 class="subsection-title">Awards & Recognition</h3>
+      <ul class="award-list">
+        @for (award of awards; track award) {
+          <li>{{ award }}</li>
+        }
+      </ul>
+    </div>
+  </div>
+</section>

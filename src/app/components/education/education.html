@@ -1,0 +1,38 @@
+<section class="education" id="education">
+  <div class="container">
+    <h2 class="section-title">Education</h2>
+    <div class="education-grid">
+      @for (edu of education; track edu.institution) {
+        <div class="education-card">
+          <h3 class="institution">{{ edu.institution }}</h3>
+          <h4 class="degree">{{ edu.degree }}</h4>
+          <p class="edu-location">{{ edu.location }}</p>
+          <div class="edu-details">
+            <span class="graduation">{{ edu.graduation }}</span>
+            <span class="gpa">GPA: {{ edu.gpa }}</span>
+          </div>
+        </div>
+      }
+    </div>
+
+    <h2 class="section-title" style="margin-top: 60px;">Freelance Projects</h2>
+    <div class="freelance-grid">
+      @for (project of freelanceProjects; track project.client + project.year) {
+        <div class="freelance-card">
+          <h3 class="client">{{ project.client }}</h3>
+          <h4 class="role">{{ project.role }}</h4>
+          @if (project.project) {
+            <p class="project-name">{{ project.project }}</p>
+          }
+          @if (project.website) {
+            <a [href]="'https://' + project.website" target="_blank" class="project-link">{{ project.website }}</a>
+          }
+          <div class="project-meta">
+            <span class="year">{{ project.year }}</span>
+            <span class="type">{{ project.type }}</span>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

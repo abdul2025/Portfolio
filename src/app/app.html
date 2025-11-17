@@ -1,0 +1,40 @@
+<div class="portfolio">
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-brand">  
+        <a href="/">
+        <svg width="36" height="36" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+          <!-- Outer engineering circle -->
+          <circle cx="24" cy="24" r="20"></circle>
+        
+          <!-- Left chevron (from gear/code icon) -->
+        
+          <!-- Right chevron arrow (from gear/code icon) -->
+          <path d="M24 28l3-4-3-4"></path>
+        
+          <!-- Terminal arrow (>) -->
+          <polyline points="30 29 36 24 30 19"></polyline>
+        
+          <!-- Terminal underline -->
+          <line x1="18" y1="32" x2="30" y2="32"></line>
+        </svg>
+      </a>
+        </div>
+      <ul class="nav-menu">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <app-hero></app-hero>
+  <app-experience></app-experience>
+  <app-skills></app-skills>
+  <app-education></app-education>
+  <app-contact></app-contact>
+</div>
+
+<router-outlet />
