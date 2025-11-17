@@ -32,7 +32,7 @@ Professional portfolio website built with Angular 19, featuring:
 - Interactive timeline design
 
 ### Skills & Expertise
-- 40+ technical skills with custom icons
+- technical skills
 - Categorized by domain:
   - Programming & Frameworks
   - Architecture & Design
