@@ -195,11 +195,8 @@ This project is open source and available for personal use.
 ## 👤 Contact
 
 **Abdulwahab Alshehri**
-- 📧 Email: contact@abdulwahab.dev
+- 📧 Email: abdul.2020alsh@gmail.com
 - 📱 Phone: +966568615094
-- 💼 LinkedIn: [abdulwahabalshehri](https://linkedin.com/in/abdulwahabalshehri)
-- 🐱 GitHub: [@abdul2025](https://github.com/abdul2025)
-- 🌐 Portfolio: [abdul2025.github.io/Portfolio](https://abdul2025.github.io/Portfolio/)
 
 ---
 
