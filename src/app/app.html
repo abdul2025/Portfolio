@@ -27,8 +27,83 @@
         <li><a href="#education">Education</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
+      
+      <!-- Hamburger Button for Mobile -->
+      <button class="hamburger" [class.active]="mobileMenuOpen()" (click)="toggleMobileMenu()" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </nav>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu-overlay" [class.active]="mobileMenuOpen()" (click)="toggleMobileMenu()"></div>
+
+  <!-- Mobile Menu Sidebar -->
+  <div class="mobile-menu" [class.active]="mobileMenuOpen()">
+    <div class="mobile-menu-header">
+      <a href="/">
+        <svg width="36" height="36" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+          <!-- Outer engineering circle -->
+          <circle cx="24" cy="24" r="20"></circle>
+        
+          <!-- Left chevron (from gear/code icon) -->
+        
+          <!-- Right chevron arrow (from gear/code icon) -->
+          <path d="M24 28l3-4-3-4"></path>
+        
+          <!-- Terminal arrow (>) -->
+          <polyline points="30 29 36 24 30 19"></polyline>
+        
+          <!-- Terminal underline -->
+          <line x1="18" y1="32" x2="30" y2="32"></line>
+        </svg>
+      </a>
+    </div>
+    <ul class="mobile-menu-items">
+      <li>
+        <a href="#hero" (click)="toggleMobileMenu()">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+          </svg>
+          Home
+        </a>
+      </li>
+      <li>
+        <a href="#experience" (click)="toggleMobileMenu()">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+          Experience
+        </a>
+      </li>
+      <li>
+        <a href="#skills" (click)="toggleMobileMenu()">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+          </svg>
+          Skills
+        </a>
+      </li>
+      <li>
+        <a href="#education" (click)="toggleMobileMenu()">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+          </svg>
+          Education
+        </a>
+      </li>
+      <li>
+        <a href="#contact" (click)="toggleMobileMenu()">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+          Contact
+        </a>
+      </li>
+    </ul>
+  </div>
 
   <app-hero></app-hero>
   <app-experience></app-experience>

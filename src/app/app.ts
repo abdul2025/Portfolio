@@ -14,4 +14,9 @@ import { Contact } from './components/contact/contact';
 })
 export class App {
   protected readonly title = signal('Abdulwahab Alshehri - Portfolio');
+  protected readonly mobileMenuOpen = signal(false);
+
+  protected toggleMobileMenu(): void {
+    this.mobileMenuOpen.update(value => !value);
+  }
 }

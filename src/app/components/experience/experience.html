@@ -1,25 +1,98 @@
 <section class="experience" id="experience">
   <div class="container">
-    <h2 class="section-title">Work Experience</h2>
-    <div class="timeline">
-      @for (exp of experiences; track exp.company + exp.period) {
-        <div class="timeline-item">
-          <div class="timeline-marker"></div>
-          <div class="timeline-content">
-            <div class="job-header">
-              <h3 class="company">{{ exp.company }}</h3>
-              <span class="period">{{ exp.period }}</span>
+    <div class="section-title">
+      <h2>Work Experience</h2>
+      <p>My professional journey in software engineering</p>
+    </div>
+
+    <div class="carousel-wrapper">
+      <div class="carousel-container" 
+           (touchstart)="onTouchStart($event)" 
+           (touchend)="onTouchEnd($event)">
+        <div class="carousel-track" [style.transform]="'translateX(-' + currentSlide() * 100 + '%)'">
+          
+          @for (exp of experiences; track exp.company + exp.period) {
+            <div class="carousel-slide" [class.active]="$index === currentSlide()">
+              <div class="slide-image">
+                <img [src]="exp.image" [alt]="exp.company">
+                <div class="image-overlay">
+                  <div class="company-logo">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      @if (exp.company === 'Flyadeal') {
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/>
+                      } @else if (exp.company === 'Puritec') {
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                      }
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              <div class="slide-content">
+                <span class="company-badge">{{ exp.company }}</span>
+                <h3 class="position-title">{{ exp.position }}</h3>
+                <div class="metadata">
+                  <div class="metadata-item">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                    </svg>
+                    {{ exp.location }}
+                  </div>
+                  <div class="metadata-item">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                    </svg>
+                    {{ exp.period }}
+                  </div>
+                </div>
+                <ul class="achievements">
+                  @for (achievement of exp.achievements; track achievement) {
+                    <li [innerHTML]="achievement"></li>
+                  }
+                </ul>
+              </div>
             </div>
-            <h4 class="position">{{ exp.position }}</h4>
-            <p class="location">{{ exp.location }}</p>
-            <ul class="achievements">
-              @for (achievement of exp.achievements; track achievement) {
-                <li>{{ achievement }}</li>
-              }
-            </ul>
+          }
+        </div>
+      </div>
+
+      <!-- Navigation Controls -->
+      <div class="carousel-controls">
+        <button class="nav-button" (click)="prevSlide()" aria-label="Previous slide">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+          </svg>
+        </button>
+
+        <div class="dot-indicators">
+          @for (segment of getProgressSegments(); track segment) {
+            <div class="dot" 
+                 [class.active]="segment === currentSlide()"
+                 (click)="goToSlide(segment)"></div>
+          }
+        </div>
+
+        <button class="nav-button" (click)="nextSlide()" aria-label="Next slide">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Progress Bar -->
+      <div class="progress-container">
+        <div class="progress-bar">
+          <div class="progress-segments">
+            @for (segment of getProgressSegments(); track segment) {
+              <div class="progress-segment" [class.active]="segment <= currentSlide()"></div>
+            }
           </div>
         </div>
-      }
+        <div class="slide-counter">
+          <span class="current">{{ currentSlide() + 1 }}</span> / <span>{{ totalSlides }}</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
