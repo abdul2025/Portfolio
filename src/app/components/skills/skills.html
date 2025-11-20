@@ -2,25 +2,71 @@
   <div class="container">
     <h2 class="section-title">Skills & Expertise</h2>
     
-    <div class="skills-grid">
-      @for (category of skillCategories; track category.title) {
-        <div class="skill-category">
-          <div class="category-header">
-            <div class="category-icon" [innerHTML]="getSafeHtml(category.icon)"></div>
-            <h3 class="category-title">{{ category.title }}</h3>
-          </div>
-          <div class="skill-items">
-            @for (skill of category.skills; track skill.name) {
-              <div class="skill-item">
-                <div class="skill-icon" [innerHTML]="getSafeHtml(skill.icon)"></div>
-                <span class="skill-name">{{ skill.name }}</span>
+    <!-- 3D Carousel Container -->
+    <div class="carousel-wrapper">
+      <div class="carousel-container" 
+           (touchstart)="onTouchStart($event)"
+           (touchend)="onTouchEnd($event)">
+        
+        <!-- Carousel Cards -->
+        <div class="carousel-track">
+          @for (category of skillCategories; track category.title; let i = $index) {
+            <div class="carousel-card" [ngClass]="getCardClass(i)">
+              <div class="skill-category">
+                <div class="category-header">
+                  <div class="category-icon" [innerHTML]="getSafeHtml(category.icon)"></div>
+                  <h3 class="category-title">{{ category.title }}</h3>
+                </div>
+                <div class="skill-items">
+                  @for (skill of category.skills; track skill.name) {
+                    <div class="skill-item">
+                      <div class="skill-icon" [innerHTML]="getSafeHtml(skill.icon)"></div>
+                      <span class="skill-name">{{ skill.name }}</span>
+                    </div>
+                  }
+                </div>
               </div>
-            }
-          </div>
+            </div>
+          }
         </div>
-      }
+        
+        <!-- Navigation Buttons -->
+        <button class="carousel-btn prev-btn" 
+                (click)="prevSlide()"
+                aria-label="Previous slide">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+        
+        <button class="carousel-btn next-btn" 
+                (click)="nextSlide()"
+                aria-label="Next slide">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </div>
+      
+      <!-- Carousel Indicators -->
+      <div class="carousel-indicators">
+        @for (category of skillCategories; track category.title; let i = $index) {
+          <button 
+            class="indicator-dot" 
+            [class.active]="i === currentIndex"
+            (click)="goToSlide(i)"
+            [attr.aria-label]="'Go to ' + category.title">
+          </button>
+        }
+      </div>
+      
+      <!-- Keyboard Navigation Hint -->
+      <div class="navigation-hint">
+        <span>Use arrow keys or swipe to navigate</span>
+      </div>
     </div>
 
+    <!-- Certifications Section -->
     <div class="certifications-section">
       <h3 class="subsection-title">Certifications</h3>
       <ul class="cert-list">
@@ -30,6 +76,7 @@
       </ul>
     </div>
 
+    <!-- Awards Section -->
     <div class="awards-section">
       <h3 class="subsection-title">Awards & Recognition</h3>
       <ul class="award-list">

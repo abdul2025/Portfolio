@@ -29,9 +29,11 @@ export class Experience {
       period: '2024 – PRESENT',
       image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=600&fit=crop',
       achievements: [
-        'Solely architected and deployed <strong>Flyadeal\'s integration with Saudia\'s ALFURSAN loyalty program</strong>, automating accrual, redemption, and retro-claim processes. Leveraged AWS serverless stack (Lambda, ECR, API Gateway, SNS, SQS, DynamoDB, CloudFormation), driving <strong>4M+ miles redeemed</strong> in first 3 months and boosting customer engagement.',
-        'Built a <strong>high-performance, event-driven microservices distributor</strong> for the OMS, centralizing five critical data streams—Flight Planning, Aircraft Fuel, Catering, Crew & Pilot roster/notifications, and Data Archiving. Leveraged AWS serverless stack enabled real-time data flow, and reduced compliance issues and penalty charges from GACA and SITA.',
-        'Architected <strong>distributed event-driven serverless services</strong> using AWS stack to process Flyadeal flight insurance refunds according to policy criteria. Enabled automated claim validation, approval routing, and refund distribution.',
+        'Solely architected and deployed Flyadeal\'s integration with Saudia\'s <strong>ALFURSAN loyalty program</strong>, automating <strong>accrual</strong>, <strong>redemption</strong>, and <strong>retro-claim</strong> processes. Leveraged <strong>AWS serverless stack</strong> (Lambda, ECR, API Gateway, SNS, SQS, DynamoDB, CloudFormation), driving <strong>4M+ miles redeemed</strong> in first 3 months and boosting customer engagement.',
+        'Architected an <strong>AWS serverless solution</strong> to automate <strong>no-show refund distribution</strong> for Ercap passengers with intelligent <strong>trip-level validation</strong>. Implemented <strong>booking segmentation logic</strong> to handle partial journey no-shows and multi-passenger bookings, enabling granular refund processing per passenger per trip segment.',
+        'Built a high-performance, <strong>event-driven microservices distributor</strong> for the OMS, centralizing five critical data streams—<strong>Flight Planning</strong>, <strong>Aircraft Fuel</strong>, <strong>Catering</strong>, <strong>Crew & Pilot roster</strong>/notifications, and <strong>Data Archiving</strong>. Leveraged <strong>AWS serverless stack</strong> enabling real-time data flow and reducing compliance issues and penalty charges from GACA and SITA.',
+        'Architected <strong>distributed event-driven serverless services</strong> using the <strong>AWS stack</strong> to process Flyadeal\'s <strong>flight insurance refunds</strong> according to policy criteria. Enabled <strong>automated claim validation</strong>, approval routing, and refund distribution.',
+        'Collaborated with cross-functional teams to define project requirements and align technical solutions with commercial objectives, while <strong>resolving complex issues</strong>, <strong>improving system performance</strong>, and contributing to strategic technology evaluations supporting long-term business planning.'
       ]
     },
     {
@@ -41,11 +43,15 @@ export class Experience {
       period: '2023 - 2024',
       image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop',
       achievements: [
-        'Led end-to-end integration with <strong>Riyadh Airport using AWS Serverless</strong>, resulting in a <strong>70% improvement in gate accuracy</strong> for real-time flight operations.',
-        'Engineered a <strong>Django-based scheduled data pipeline</strong> that collects pilot journey metrics from APIs and delivers to S3-powered analytics dashboards.',
-        'Engineered a <strong>high availability serverless API for Hajj/Umrah operations</strong>, handling massive seasonal demand for real-time passenger verification, significantly enhancing operational flow.',
-        'Developed a <strong>full-stack (Django/Angular) Aircraft Certificate Management system</strong>, centralizing documentation and improving data retrieval time by <strong>90%</strong> for pilots and dispatchers.',
+        'Led end-to-end integration with Riyadh Airport using <strong>AWS Serverless</strong>, resulting in a <strong>70% improvement in gate accuracy</strong> for real-time flight operations.',
+        'Engineered a <strong>high-availability serverless API</strong> for <strong>Hajj/Umrah operations</strong>, handling massive seasonal demand for <strong>real-time passenger verification</strong> and significantly enhancing operational flow.',
+        'Developed a <strong>full-stack (Django/Angular)</strong> Aircraft Certificate Management system, centralizing documentation and improving <strong>data retrieval time by 90%</strong> for pilots and dispatchers.',
+        'Designed and deployed a <strong>customer interaction archiving solution</strong> (Sprout Social integration), enhancing <strong>data governance</strong> and accessibility for strategic business decisions.',
+        'Decoupled and rearchitected the <strong>NPS Monolith (MVC)</strong> into modern standalone applications, reducing <strong>time-to-insight by 40%</strong> and enabling faster service quality improvements.',
+        'Engineered a <strong>Django-based scheduled data pipeline</strong> that collects <strong>pilot journey metrics</strong> from APIs and delivers them to <strong>S3-powered analytics dashboards</strong>.',
+        'Standardized development workflow by implementing <strong>GitLab</strong> as the core platform for version control and automated <strong>CI/CD</strong>, resulting in a <strong>50% enhancement in deployment speed</strong> and team collaboration.'
       ]
+      
     },
     {
       company: 'Puritec',

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
@@ -8,11 +8,112 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
   templateUrl: './skills.html',
   styleUrl: './skills.css',
 })
-export class Skills {
+export class Skills implements OnInit, OnDestroy {
+  currentIndex = 0;
+  isTransitioning = false;
+  private touchStartX = 0;
+  private touchEndX = 0;
+  private autoPlayInterval?: any;
+
   constructor(private sanitizer: DomSanitizer) {}
+
+  ngOnInit() {
+    this.startAutoPlay();
+  }
+
+  ngOnDestroy() {
+    this.stopAutoPlay();
+  }
 
   getSafeHtml(html: string): SafeHtml {
     return this.sanitizer.bypassSecurityTrustHtml(html);
+  }
+
+  getCardClass(index: number): string {
+    const diff = index - this.currentIndex;
+    const total = this.skillCategories.length;
+    
+    // Normalize difference to handle wraparound
+    let normalizedDiff = diff;
+    if (diff > total / 2) normalizedDiff = diff - total;
+    if (diff < -total / 2) normalizedDiff = diff + total;
+
+    if (normalizedDiff === 0) return 'active';
+    if (normalizedDiff === -1) return 'prev';
+    if (normalizedDiff === 1) return 'next';
+    if (normalizedDiff < -1) return 'prev-hidden';
+    return 'next-hidden';
+  }
+
+  nextSlide() {
+    if (this.isTransitioning) return;
+    this.isTransitioning = true;
+    this.currentIndex = (this.currentIndex + 1) % this.skillCategories.length;
+    setTimeout(() => this.isTransitioning = false, 600);
+    this.resetAutoPlay();
+  }
+
+  prevSlide() {
+    if (this.isTransitioning) return;
+    this.isTransitioning = true;
+    this.currentIndex = this.currentIndex === 0 
+      ? this.skillCategories.length - 1 
+      : this.currentIndex - 1;
+    setTimeout(() => this.isTransitioning = false, 600);
+    this.resetAutoPlay();
+  }
+
+  goToSlide(index: number) {
+    if (this.isTransitioning || index === this.currentIndex) return;
+    this.isTransitioning = true;
+    this.currentIndex = index;
+    setTimeout(() => this.isTransitioning = false, 600);
+    this.resetAutoPlay();
+  }
+
+  @HostListener('document:keydown', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    if (event.key === 'ArrowLeft') this.prevSlide();
+    if (event.key === 'ArrowRight') this.nextSlide();
+  }
+
+  onTouchStart(event: TouchEvent) {
+    this.touchStartX = event.changedTouches[0].screenX;
+  }
+
+  onTouchEnd(event: TouchEvent) {
+    this.touchEndX = event.changedTouches[0].screenX;
+    this.handleSwipe();
+  }
+
+  private handleSwipe() {
+    const swipeThreshold = 50;
+    const diff = this.touchStartX - this.touchEndX;
+    
+    if (Math.abs(diff) > swipeThreshold) {
+      if (diff > 0) {
+        this.nextSlide();
+      } else {
+        this.prevSlide();
+      }
+    }
+  }
+
+  private startAutoPlay() {
+    this.autoPlayInterval = setInterval(() => {
+      this.nextSlide();
+    }, 9000);
+  }
+
+  private stopAutoPlay() {
+    if (this.autoPlayInterval) {
+      clearInterval(this.autoPlayInterval);
+    }
+  }
+
+  private resetAutoPlay() {
+    this.stopAutoPlay();
+    this.startAutoPlay();
   }
 
   skillCategories = [
