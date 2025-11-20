@@ -437,27 +437,32 @@
 @media (max-width: 768px) {
   .carousel-container {
     height: 500px;
-    perspective: 1000px;
+    perspective: 800px; /* Reduced from 1000px for zoom out effect */
   }
 
   .carousel-card {
-    max-width: 90%;
+    max-width: 85%; /* Reduced from 90% */
+  }
+
+  /* Active Card - Scaled down for zoom out effect */
+  .carousel-card.active {
+    transform: translate(-50%, -50%) translateZ(0) rotateY(0deg) scale(0.85);
   }
 
   .carousel-card.prev {
-    transform: translate(-120%, -50%) translateZ(-200px) rotateY(35deg) scale(0.7);
+    transform: translate(-120%, -50%) translateZ(-250px) rotateY(35deg) scale(0.65);
     opacity: 0.4;
   }
 
   .carousel-card.next {
-    transform: translate(20%, -50%) translateZ(-200px) rotateY(-35deg) scale(0.7);
+    transform: translate(20%, -50%) translateZ(-250px) rotateY(-35deg) scale(0.65);
     opacity: 0.4;
   }
 
   .carousel-card.prev-hidden,
   .carousel-card.next-hidden {
     opacity: 0;
-    transform: translate(-150%, -50%) translateZ(-300px) scale(0.5);
+    transform: translate(-150%, -50%) translateZ(-350px) scale(0.45);
   }
 
   .carousel-btn {
@@ -502,7 +507,8 @@
 
 @media (max-width: 480px) {
   .carousel-container {
-    height: 480px;
+    height: 400px; /* Reduced from 480px */
+    perspective: 600px; /* Further reduced for more zoom out */
   }
 
   /* HIDE NAV BUTTONS ON MOBILE */
@@ -512,12 +518,30 @@
   }
 
   .carousel-card {
-    max-width: 95%;
+    max-width: 100%; /* Reduced from 95% */
+  }
+
+  /* Active Card - Further scaled down */
+  .carousel-card.active {
+    transform: translate(-50%, -50%) translateZ(0) rotateY(0deg) scale(0.75);
+  }
+
+  .carousel-card.prev {
+    transform: translate(-110%, -50%) translateZ(-200px) rotateY(30deg) scale(0.55);
+  }
+
+  .carousel-card.next {
+    transform: translate(10%, -50%) translateZ(-200px) rotateY(-30deg) scale(0.55);
+  }
+
+  .carousel-card.prev-hidden,
+  .carousel-card.next-hidden {
+    transform: translate(-140%, -50%) translateZ(-300px) scale(0.4);
   }
 
   .skill-category {
     padding: 1.5rem;
-    max-height: 420px;
+    max-height: 580px; /* Reduced from 420px */
   }
 
   .category-icon svg {
