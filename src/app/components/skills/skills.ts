@@ -102,7 +102,7 @@ export class Skills implements OnInit, OnDestroy {
   private startAutoPlay() {
     this.autoPlayInterval = setInterval(() => {
       this.nextSlide();
-    }, 9000);
+    }, 19000);
   }
 
   private stopAutoPlay() {
